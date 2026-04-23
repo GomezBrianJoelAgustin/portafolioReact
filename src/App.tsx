@@ -129,7 +129,7 @@ function App() {
             <p className="text-gray-400 text-sm leading-relaxed">
               Soy desarrollador fullstack enfocado en Laravel y React. 
               Me especializo en crear aplicaciones web completas, desde backend hasta frontend.
-              Actualmente busco mi primera oportunidad.
+              Actualmente busco mi primera oportunidad en esta area.
             </p>
           </div>
 

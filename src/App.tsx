@@ -133,12 +133,6 @@ function App() {
             </p>
           </div>
 
-          {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Card title="Desarrollo Backend con Laravel (APIs, Auth, MySQL)" />
-            <Card title="Frontend con React + Inertia (SPA modernas)" />
-          </div>
-
           {/* Proyectos */}
           <div>
             <h2 className="text-2xl font-bold mb-4">PROYECTOS</h2>

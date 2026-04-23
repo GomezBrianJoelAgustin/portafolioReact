@@ -121,6 +121,7 @@ function App() {
             </div>
           </div>
 
+          {/* About me */}
           <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 hover:border-orange-500 transition-all duration-300">
             <h2 className="text-xl font-bold mb-2 text-orange-500">
               Sobre mí
@@ -155,14 +156,6 @@ function Stat({ number, label }: { number: string; label: string }) {
     <div className="text-center">
       <h3 className="text-3xl font-bold">{number}</h3>
       <p className="text-gray-500 text-sm">{label}</p>
-    </div>
-  );
-}
-
-function Card({ title }: { title: string }) {
-  return (
-    <div className="bg-gradient-to-br from-orange-500 to-orange-700 text-black p-5 rounded-2xl font-semibold hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer">
-      {title}
     </div>
   );
 }

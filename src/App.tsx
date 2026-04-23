@@ -12,7 +12,7 @@ const projects: ProjectType[] = [
   {
     title: "Sistema de gestión de heladería",
     desc: "Aplicación para gestión de productos, ventas y stock con autenticación de usuarios.",
-    github: "https://github.com/GomezBrianJoelAgustin/ProyectoHeladeria",
+    github: "https://github.com/GomezBrianJoelAgustin",
     demo: "https://portafolio-react-mauve.vercel.app",
     tech: "Laravel · MySQL · Blade",
   },
@@ -40,10 +40,15 @@ function App() {
 
           <h2 className="text-xl font-bold">Agustin Gomez</h2>
 
+          <div className="flex gap-2 mt-4 flex-wrap">
+            <span className="bg-zinc-800 px-2 py-1 rounded text-xs">Laravel</span>
+            <span className="bg-zinc-800 px-2 py-1 rounded text-xs">React</span>
+            <span className="bg-zinc-800 px-2 py-1 rounded text-xs">MySQL</span>
+          </div>
+
           <p className="text-gray-400 text-sm mt-2">
-            📍 Argentina <br />
-            💻 Laravel · React · MySQL · PHP <br />
-            🚀 Buscando mi primera oportunidad como desarrollador
+            Argentina <br />
+            Buscando mi primera oportunidad como desarrollador
           </p>
 
           {/* CTA (esto faltaba) */}
@@ -53,6 +58,14 @@ function App() {
             className="mt-4 inline-block bg-orange-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition"
           >
             Contactame
+          </a>
+
+          <a
+            href="/CV-Agustin-Gomez.pdf"
+            target="_blank"
+            className="mt-4 inline-block bg-orange-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition"
+          >
+            Ver CV
           </a>
 
           {/* Links */}
@@ -103,9 +116,21 @@ function App() {
             {/* Stats */}
             <div className="flex gap-8 mt-6">
               <Stat number="+3" label="Años aprendiendo" />
-              <Stat number="+5" label="Proyectos desarrollados" />
+              <Stat number="+1" label="Proyectos desarrollados" />
               <Stat number="100%" label="Compromiso" />
             </div>
+          </div>
+
+          <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 hover:border-orange-500 transition-all duration-300">
+            <h2 className="text-xl font-bold mb-2 text-orange-500">
+              Sobre mí
+            </h2>
+
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Soy desarrollador fullstack enfocado en Laravel y React. 
+              Me especializo en crear aplicaciones web completas, desde backend hasta frontend.
+              Actualmente busco mi primera oportunidad.
+            </p>
           </div>
 
           {/* Cards */}

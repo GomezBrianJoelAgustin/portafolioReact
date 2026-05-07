@@ -48,7 +48,7 @@ function App() {
 
           <p className="text-gray-400 text-sm mt-2">
             Argentina <br />
-            Buscando mi primera oportunidad como desarrollador
+            Buscando mi primera oportunidad como desarrollador fullstack.
           </p>
 
           {/* CTA (esto faltaba) */}

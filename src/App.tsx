@@ -10,7 +10,7 @@ type ProjectType = {
 
 const projects: ProjectType[] = [
   {
-    title: "Sistema de gestión de heladería",
+    title: "Sistema de gestión y ventas.",
     desc: "Aplicación para gestión de productos, ventas y stock con autenticación de usuarios.",
     github: "https://github.com/GomezBrianJoelAgustin/SaleSystem",
     demo: "https://salesystem-816l.onrender.com/",

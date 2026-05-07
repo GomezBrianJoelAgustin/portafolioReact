@@ -12,8 +12,8 @@ const projects: ProjectType[] = [
   {
     title: "Sistema de gestión de heladería",
     desc: "Aplicación para gestión de productos, ventas y stock con autenticación de usuarios.",
-    github: "https://github.com/GomezBrianJoelAgustin",
-    demo: "https://portafolio-react-mauve.vercel.app",
+    github: "https://github.com/GomezBrianJoelAgustin/SaleSystem",
+    demo: "https://salesystem-816l.onrender.com/",
     tech: "Laravel · MySQL · Blade",
   },
   {

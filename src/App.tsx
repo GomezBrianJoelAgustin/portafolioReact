@@ -10,18 +10,18 @@ type ProjectType = {
 
 const projects: ProjectType[] = [
   {
-    title: "Sistema de gestión y ventas.",
+    title: "SaleSystem",
     desc: "Aplicación para gestión de productos, ventas y stock con autenticación de usuarios.",
     github: "https://github.com/GomezBrianJoelAgustin/SaleSystem",
     demo: "https://salesystem-816l.onrender.com/",
-    tech: "Laravel · MySQL · Blade",
+    tech: "Laravel · MySQL · Blade - React - Tailwind - Iertia - PHP",
   },
   {
-    title: "Registro de asistencias",
-    desc: "Sistema para control de asistencias con visualización de datos y métricas.",
-    github: "https://github.com/tuusuario/proyecto2",
+    title: "PedidosApp",
+    desc: "Sistema para la venta de comida con autenticación de usuarios.",
+    github: "https://github.com/GomezBrianJoelAgustin/pedidosapp",
     demo: "https://proyecto2.vercel.app",
-    tech: "React · Laravel · Inertia",
+    tech: "Laravel · MySQL · Blade - React - Tailwind - Iertia - PHP",
   },
 ];
 
@@ -30,7 +30,6 @@ function App() {
     <div className="bg-gradient-to-br from-orange-600 to-red-700 min-h-screen flex items-center justify-center p-6">
       <div className="bg-black text-white w-full max-w-6xl rounded-3xl p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        {/* Sidebar */}
         <div className="bg-zinc-900 rounded-2xl p-6 flex flex-col items-center text-center">
           <img
             src={profile}
@@ -51,7 +50,6 @@ function App() {
             Buscando mi primera oportunidad como desarrollador fullstack.
           </p>
 
-          {/* CTA (esto faltaba) */}
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=agustingomez02000@gmail.com"
             target="_blank"
@@ -61,14 +59,13 @@ function App() {
           </a>
 
           <a
-            href="/CV-Agustin-Gomez.pdf"
+            href="/CV_Agustin_Gomez.pdf"
             target="_blank"
             className="mt-4 inline-block bg-orange-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition"
           >
             Ver CV
           </a>
 
-          {/* Links */}
           <div className="flex gap-4 mt-4">
             <a
               href="https://github.com/GomezBrianJoelAgustin"
@@ -98,10 +95,8 @@ function App() {
           </div>
         </div>
 
-        {/* Contenido */}
         <div className="md:col-span-2 space-y-8">
 
-          {/* Hero */}
           <div>
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
               FULLSTACK <br />
@@ -113,15 +108,13 @@ function App() {
               Construyo aplicaciones web completas y escalables.
             </p>
 
-            {/* Stats */}
             <div className="flex gap-8 mt-6">
               <Stat number="+3" label="Años aprendiendo" />
-              <Stat number="+1" label="Proyectos desarrollados" />
+              <Stat number="+3" label="Proyectos desarrollados" />
               <Stat number="100%" label="Compromiso" />
             </div>
           </div>
 
-          {/* About me */}
           <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 hover:border-orange-500 transition-all duration-300">
             <h2 className="text-xl font-bold mb-2 text-orange-500">
               Sobre mí
@@ -134,7 +127,6 @@ function App() {
             </p>
           </div>
 
-          {/* Proyectos */}
           <div>
             <h2 className="text-2xl font-bold mb-4">PROYECTOS</h2>
 
@@ -166,7 +158,6 @@ function Project({ title, desc, github, demo, tech }: ProjectType) {
       <h3 className="font-bold text-lg">{title}</h3>
       <p className="text-gray-400 text-sm mt-1">{desc}</p>
 
-      {/* Stack (esto faltaba) */}
       <p className="text-xs text-gray-500 mt-2">{tech}</p>
 
       <div className="flex gap-4 mt-3">

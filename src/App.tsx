@@ -18,7 +18,7 @@ const projects: ProjectType[] = [
   },
   {
     title: "PedidosApp",
-    desc: "Sistema para la venta de comida online con autenticación de usuarios. usuario: visitor@example.com contraseña: password",
+    desc: "Sistema para la venta de comida online con autenticación de usuarios. usuario: admin@empandas.com contraseña: password123",
     github: "https://github.com/GomezBrianJoelAgustin/pedidosapp",
     demo: "https://pedidosapp-gno1.onrender.com/",
     tech: "Laravel · MySQL · Blade - React - Tailwind - Iertia - PHP",

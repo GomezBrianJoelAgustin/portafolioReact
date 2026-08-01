@@ -11,16 +11,16 @@ type ProjectType = {
 const projects: ProjectType[] = [
   {
     title: "SaleSystem",
-    desc: "Aplicación para gestión de productos, ventas y stock con autenticación de usuarios.",
+    desc: "Aplicación para gestión de productos, ventas y stock con autenticación de usuarios. usuario: visitor@example.com contraseña: password",
     github: "https://github.com/GomezBrianJoelAgustin/SaleSystem",
     demo: "https://salesystem-816l.onrender.com/",
     tech: "Laravel · MySQL · Blade - React - Tailwind - Iertia - PHP",
   },
   {
     title: "PedidosApp",
-    desc: "Sistema para la venta de comida con autenticación de usuarios.",
+    desc: "Sistema para la venta de comida online con autenticación de usuarios. usuario: visitor@example.com contraseña: password",
     github: "https://github.com/GomezBrianJoelAgustin/pedidosapp",
-    demo: "https://proyecto2.vercel.app",
+    demo: "https://pedidosapp-gno1.onrender.com/",
     tech: "Laravel · MySQL · Blade - React - Tailwind - Iertia - PHP",
   },
 ];

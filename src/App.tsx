@@ -14,7 +14,7 @@ import {
   Image,
 } from "lucide-react";
 import profile from "./assets/profile.jpg";
-import welcomeImg from "./pedidosapp-screenshots/Welcome.PNG";
+import welcomeImg from './assets/pedidosapp-screenshots/Welcome.PNG';
 
 function GithubIcon({ size = 18 }: { size?: number }) {
   return (

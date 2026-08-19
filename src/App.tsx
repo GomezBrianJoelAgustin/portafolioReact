@@ -7,8 +7,14 @@ import {
   Circle,
   GitBranch,
   Terminal,
+  Copy,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Image,
 } from "lucide-react";
 import profile from "./assets/profile.jpg";
+import welcomeImg from "./pedidosapp-screenshots/Welcome.PNG";
 
 function GithubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -26,9 +32,10 @@ function LinkedinIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-type Credentials = {
-  user: string;
-  pass: string;
+type RoleCredentials = {
+  role: string;
+  email: string;
+  password: string;
 };
 
 type ProjectType = {
@@ -38,7 +45,9 @@ type ProjectType = {
   github: string;
   demo: string;
   tech: string[];
-  credentials: Credentials;
+  roles: RoleCredentials[];
+  highlights?: string[];
+  images?: { label: string; src: string }[];
 };
 
 type SkillCategory = "Backend" | "Frontend" | "Tools";
@@ -57,16 +66,51 @@ const projects: ProjectType[] = [
     github: "https://github.com/GomezBrianJoelAgustin/SaleSystem",
     demo: "https://salesystem-816l.onrender.com/",
     tech: ["Laravel", "MySQL", "React", "Inertia.js", "Tailwind"],
-    credentials: { user: "visitor@example.com", pass: "password" },
+    roles: [
+      {
+        role: "Admin",
+        email: "admin@example.com",
+        password: "password",
+      },
+    ],
   },
   {
     title: "PedidosApp",
     status: "In progress",
-    desc: "Online food ordering app with user authentication, a shopping cart, and an admin dashboard.",
+    desc: "Full-stack web system for gastronomic management in real time. It has stock control, multi-role architecture (Admin, Cashier, Kitchen, Delivery), interactive digital menu with floating cart, optimization of backend queries and adaptive UI/UX disease (Dark/Light Mode).",
     github: "https://github.com/GomezBrianJoelAgustin/pedidosapp",
     demo: "https://pedidosapp-gno1.onrender.com/",
-    tech: ["Laravel", "MySQL", "React", "Inertia.js", "Tailwind"],
-    credentials: { user: "admin@empandas.com", pass: "password123" },
+    tech: ["Laravel", "MySQL", "React", "Inertia.js", "Tailwind", "Spatie Permissions"],
+    roles: [
+      {
+        role: "Super Admin",
+        email: "admin@empandas.com",
+        password: "password123",
+      },
+      {
+        role: "Cajero / Cashier",
+        email: "caja@empandas.com",
+        password: "password123",
+      },
+      {
+        role: "Chef / Cocina",
+        email: "cocina@empandas.com",
+        password: "password123",
+      },
+      {
+        role: "Cadete / Delivery",
+        email: "cadete@empandas.com",
+        password: "password123",
+      },
+    ],
+    highlights: [
+      "Access Control (Spatie Permissions): Isolated multi-role structure for cashier, kitchen, delivery and administration.",
+      "Performance Optimization: Strict backend pagination (10 items per page) and good practices in React to avoid memory leaks.",
+      "UI/UX Design: Handcrafted color palette adapted for both Dark Mode (Oven) and Gastronomic Light Mode.",
+    ],
+    images: [
+      { label: "Welcome", src: welcomeImg },
+    ],
   },
 ];
 
@@ -190,7 +234,6 @@ function App() {
             </div>
           </aside>
 
-          {/* Main content */}
           <main className="md:col-span-2 space-y-6">
             <div>
               <p className="mono text-xs text-[#7C8494] flex items-center gap-2 mb-3">
@@ -273,7 +316,111 @@ function Stat({ number, label }: { number: string; label: string }) {
   );
 }
 
-function Project({ title, status, desc, github, demo, tech, credentials }: ProjectType) {
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded bg-[#232830] hover:bg-[#2E333D] text-[#7C8494] transition-colors"
+      aria-label={`Copy ${text}`}
+    >
+      {copied ? (
+        <>
+          <Check size={10} className="text-[#5EEAD4]" />
+          <span className="text-[#5EEAD4]">Copied</span>
+        </>
+      ) : (
+        <>
+          <Copy size={10} />
+          <span>Copy</span>
+        </>
+      )}
+    </button>
+  );
+}
+
+function ProjectCarousel({ images }: { images: { label: string; src: string }[] }) {
+  const [index, setIndex] = useState(0);
+
+  const prev = () => setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
+  const next = () => setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div className="mt-4">
+      <div className="flex items-center gap-2 mb-2">
+        <Image size={13} className="text-[#A78BFA]" />
+        <span className="mono text-[11px] text-[#A78BFA] uppercase tracking-wide">
+          Preview
+        </span>
+      </div>
+      <div className="relative rounded-lg overflow-hidden border border-[#232830] bg-[#171B23]">
+        <div className="aspect-video flex items-center justify-center">
+          <img
+            src={images[index].src}
+            alt={images[index].label}
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between px-2 pointer-events-none">
+          <button
+            onClick={prev}
+            className="pointer-events-auto p-1.5 rounded-md bg-[#0D0F14]/80 border border-[#232830] text-[#7C8494] hover:text-[#EDEFF2] transition-colors"
+            aria-label="Previous screenshot"
+          >
+            <ChevronDown size={14} className="rotate-90" />
+          </button>
+          <button
+            onClick={next}
+            className="pointer-events-auto p-1.5 rounded-md bg-[#0D0F14]/80 border border-[#232830] text-[#7C8494] hover:text-[#EDEFF2] transition-colors"
+            aria-label="Next screenshot"
+          >
+            <ChevronDown size={14} className="-rotate-90" />
+          </button>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center gap-1.5 mt-2">
+        {images.map((img, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all ${
+              i === index ? "w-4 bg-[#5EEAD4]" : "w-1.5 bg-[#232830] hover:bg-[#7C8494]"
+            }`}
+            aria-label={`Go to screenshot ${i + 1}: ${img.label}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Project({
+  title,
+  status,
+  desc,
+  github,
+  demo,
+  tech,
+  roles,
+  highlights,
+  images,
+}: ProjectType) {
+  const [selectedRole, setSelectedRole] = useState(0);
+  const [showHighlights, setShowHighlights] = useState(false);
+
+  const current = roles[selectedRole] || roles[0];
+
   return (
     <div className="glow group p-5 rounded-xl border border-[#232830] bg-[#0D0F14] transition-all duration-200">
       <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -318,16 +465,79 @@ function Project({ title, status, desc, github, demo, tech, credentials }: Proje
         ))}
       </div>
 
-      {credentials && (
-        <div className="mono text-xs mt-3 bg-[#171B23] border border-[#232830] rounded-lg px-3 py-2 text-[#7C8494] flex flex-wrap gap-x-4 gap-y-1">
-          <span>
-            <span className="text-[#A78BFA]">user:</span> {credentials.user}
-          </span>
-          <span>
-            <span className="text-[#A78BFA]">pass:</span> {credentials.pass}
-          </span>
+      {roles && roles.length > 0 && (
+        <div className="mt-4">
+          <div className="flex items-center justify-between mb-2">
+            <p className="mono text-[11px] text-[#A78BFA] uppercase tracking-wide">
+              Test Credentials
+            </p>
+            {roles.length > 1 && (
+              <span className="text-[10px] text-[#7C8494]">{roles.length} roles</span>
+            )}
+          </div>
+
+          {roles.length > 1 && (
+            <div className="flex flex-wrap gap-1.5 mb-2">
+              {roles.map((r, i) => (
+                <button
+                  key={r.role}
+                  onClick={() => setSelectedRole(i)}
+                  className={`mono text-[10px] px-2 py-1 rounded-md border transition-colors ${
+                    i === selectedRole
+                      ? "bg-[#A78BFA]/15 border-[#A78BFA]/40 text-[#A78BFA]"
+                      : "bg-[#171B23] border-[#232830] text-[#7C8494] hover:border-[#7C8494]/40"
+                  }`}
+                >
+                  {r.role}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div className="mono text-xs bg-[#171B23] border border-[#232830] rounded-lg px-3 py-2.5">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[#A78BFA] text-[11px] uppercase tracking-wide">
+                {current.role}
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 text-[#7C8494]">
+              <div className="flex items-center justify-between gap-2">
+                <span>
+                  <span className="text-[#A78BFA]">email:</span> {current.email}
+                </span>
+                <CopyButton text={current.email} />
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <span>
+                  <span className="text-[#A78BFA]">pass:</span> {current.password}
+                </span>
+                <CopyButton text={current.password} />
+              </div>
+            </div>
+          </div>
         </div>
       )}
+
+      {highlights && highlights.length > 0 && (
+        <div className="mt-4">
+          <button
+            onClick={() => setShowHighlights(!showHighlights)}
+            className="flex items-center gap-1.5 text-[11px] text-[#A78BFA] uppercase tracking-wide hover:text-[#EDEFF2] transition-colors"
+          >
+            {showHighlights ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+            Technical details
+          </button>
+          {showHighlights && (
+            <ul className="mt-2 space-y-1.5 text-[#B4BAC4] text-xs leading-relaxed list-disc list-inside">
+              {highlights.map((h, i) => (
+                <li key={i}>{h}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+
+      {images && images.length > 0 && <ProjectCarousel images={images} />}
     </div>
   );
 }
